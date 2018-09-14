@@ -8,3 +8,7 @@ Shell script for quickly running `apache benchmark`, `siege` for load testing
 # Usage
 
 `sh benchmark.sh`
+
+---
+
+<img src="sad.jpg" width="200" height="200" />
