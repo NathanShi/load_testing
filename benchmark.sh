@@ -7,6 +7,7 @@
 # - weighttp: could also be used, but it's not supporting ssl/https.
 
 DIVIDER="\n--------------------------\n--------------------------\n"
+DATE=$(date)
 if [ ! -d "benchmark_result" ]
 then
   mkdir "./benchmark_result"
@@ -31,9 +32,11 @@ CONCURRENT_USER_ARRAY=( 1 5 10 20 )
 
 # Benchmark START:
 echo "Benching: $SITE"
+echo "Start Time: $DATE"
 for FILE in $OUTFILES; do
   touch $FILE
   echo "Benching: $SITE" > $FILE
+  echo "Start Time: $DATE" >> $FILE
   echo $DIVIDER >> $FILE
 done
 
@@ -58,3 +61,6 @@ for round in ${!CONCURRENT_USER_ARRAY[@]}; do
     echo $DIVIDER >> $FILE
   done
 done
+
+DATE=$(date)
+echo "End Time: $DATE" >> $FILE
