@@ -52,10 +52,10 @@ for round in ${!CONCURRENT_USER_ARRAY[@]}; do
   done
 
   # apache benchmark
-  ab -r -n $TOTAL_REQUEST -c ${CONCURRENT_USER_ARRAY[round]} -s $TIMEOUT $SITE >> "./benchmark_result/ab_result.txt"
+  ab -r -n $TOTAL_REQUEST -c ${CONCURRENT_USER_ARRAY[round]} -s $TIMEOUT $SITE >> ${OUTFILES[0]}
 
   # siege
-  siege -c${CONCURRENT_USER_ARRAY[round]} -r$((TOTAL_REQUEST / ${CONCURRENT_USER_ARRAY[round]})) -d10s $SITE >> "./benchmark_result/siege_result.txt"
+  siege -c${CONCURRENT_USER_ARRAY[round]} -r$((TOTAL_REQUEST / ${CONCURRENT_USER_ARRAY[round]})) -d10s $SITE >> ${OUTFILES[1]}
 
   for FILE in $OUTFILES; do
     echo $DIVIDER >> $FILE
